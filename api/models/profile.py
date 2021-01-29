@@ -1,8 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# Utilities
+from api.models.utils import ParentModel
 
-class Profile(models.Model):
+
+class Profile(ParentModel):
 
     MALE = 0
     FEMALE = 1
@@ -19,8 +22,6 @@ class Profile(models.Model):
     gender = models.PositiveSmallIntegerField(choices=GENDERS, null=True, blank=True)
 
     activo = models.BooleanField(default=True)
-    creado = models.DateTimeField(auto_now_add=True)
-    modificado = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
         return self.user.username
