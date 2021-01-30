@@ -23,17 +23,17 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def get_serializer_class(self):
         """ Serializers para la API """
-        if self.action == 'list' or self.action == 'retrieve':
-            return ProductReadSerializer
-        else:
+        if self.action == 'create':
             return ProductSerializer
+        else:
+            return ProductReadSerializer
     
     def get_permissions(self):
         """ Permisos para el recurso """
-        if self.action == 'list' or self.action == 'raw':
-            permission_classes = [AllowAny]
-        else:
+        if self.action == 'create':
             permission_classes = [IsAuthenticated]
+        else:
+            permission_classes = [AllowAny]
         return [permission() for permission in permission_classes]
     
     def create(self, request, *args, **kwargs):
@@ -71,6 +71,15 @@ class ProductViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer_class()
         products = serializer(queryset, many=True)
         return Response(products.data)
+
+    def retrieve(self, request, pk=None):
+        try:
+            queryset = Product.objects.get(pk=pk)
+            serializer = self.get_serializer_class()
+            product = serializer(queryset)
+            return Response(product.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"detail": str(e)})
     
     @action(methods=["get"], detail=False)
     def raw(self, request):

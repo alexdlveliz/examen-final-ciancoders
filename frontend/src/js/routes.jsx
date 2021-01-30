@@ -24,6 +24,7 @@ import ExampleTabs from './common/components/Examples/Tabs/Tabs';
 require('../style/index.css');
 
 import ProductListContainer from './common/components/Products/ProductListContainer';
+import CartContainer from './common/components/Products/CartContainer';
 
 module.exports = (
     <div>
@@ -31,12 +32,14 @@ module.exports = (
             <Switch>
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/registro" component={Registro} />
-                <PublicRoute exact path="/" component={ProductListContainer} />
                 <ProtectedRoute exact path="/page2" component={Examples} />
                 <ProtectedRoute exact path="/user-profile" component={Profile} />
                 <ProtectedRoute exact path="/grids" component={Grids} />
                 <ProtectedRoute exact path="/notifications" component={Notificaciones} />
                 <ProtectedRoute exact path="/tabs" component={ExampleTabs} />
+
+                <PublicRoute exact path="/" component={ProductListContainer} />
+                <PublicRoute exact path="/cart" component={CartContainer} />
                 <Route component={NotFound} />
             </Switch>
         </div>

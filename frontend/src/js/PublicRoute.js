@@ -5,6 +5,7 @@ import { logOut, getMe } from './redux/modules/cuenta/login';
 
 // Maquetado
 import SideBar from './common/components/layout/Sidebar/SideBar';
+import PublicSideBar from './common/components/layout/Sidebar/PublicSideBar';
 import Footer from './common/components/layout/Footer/Footer';
 
 import Navbar from './common/components/layout/Navbar/Navbar';
@@ -76,10 +77,9 @@ class PublicRouteBase extends Component {
                             </div>
                         ) : (
                             <div>
-                            <SideBar
+                            <PublicSideBar
                                 toggleOpen={this.state.toggleOpen}
                                 navToggle={this.navToggle}
-                                logOut={logOut}
                             />
                             <main className="main-content p-0 col-sm-12 col-md-9 offset-md-3 col-lg-10 offset-lg-2">
                                 <div className="main-navbar bg-white sticky-top">
@@ -98,10 +98,9 @@ class PublicRouteBase extends Component {
                         )
                     ) : (
                         <div>
-                            <SideBar
+                            <PublicSideBar
                                 toggleOpen={this.state.toggleOpen}
                                 navToggle={this.navToggle}
-                                logOut={logOut}
                             />
                             <main className="main-content p-0 col-sm-12 col-md-9 offset-md-3 col-lg-10 offset-lg-2">
                                 <div className="main-navbar bg-white sticky-top">
@@ -117,12 +116,6 @@ class PublicRouteBase extends Component {
                                 <Footer />
                             </main>
                         </div>
-                        // <Redirect
-                        //     to={{
-                        //         pathname: "/login",
-                        //         state: { from: props.location }
-                        //     }}
-                        // />
                     )
                 }
             />

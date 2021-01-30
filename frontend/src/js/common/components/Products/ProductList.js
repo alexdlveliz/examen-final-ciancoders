@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import ProductCard from './ProductCard';
+
 class ProductList extends Component {
     componentWillMount() {
         const { getProducts } = this.props;
@@ -7,34 +9,19 @@ class ProductList extends Component {
     }
 
     render() {
-        const { products } = this.props;
+        const { products, addToCart } = this.props;
         return (
             <React.Fragment>
-                <h1>Catálogo</h1>
+                <div className="my-4 p-4 padding card">
+                    <div className="row text-center px-4 head">
+                        <h1>Catálogo de productos</h1>
+                    </div>
+                </div>
                 {products && (
                     <section className="container d-flex flex-row justify-content-between flex-wrap">
                         {products.map(product => {
                             return (
-                                <div
-                                    className="card"
-                                    style={{ width: '18rem' }}
-                                    key={product.id}
-                                >
-                                    <div className="card-body">
-                                        <h5 className="card-title">
-                                            {product.name}
-                                        </h5>
-                                        <h6 className="card-subtitle mb-2 text-muted">
-                                            Card subtitle
-                                        </h6>
-                                        <p className="card-text">
-                                            {product.description}
-                                        </p>
-                                        <a href="#" className="card-link">
-                                            Agregar al carrito
-                                        </a>
-                                    </div>
-                                </div>
+                                <ProductCard product={product} addToCart={addToCart} key={product.id}/>
                             );
                         })}
                     </section>
