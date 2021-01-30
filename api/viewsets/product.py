@@ -30,7 +30,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     
     def get_permissions(self):
         """ Permisos para el recurso """
-        if self.action == 'list':
+        if self.action == 'list' or self.action == 'raw':
             permission_classes = [AllowAny]
         else:
             permission_classes = [IsAuthenticated]
@@ -55,5 +55,29 @@ class ProductViewSet(viewsets.ModelViewSet):
 
             serializer = ProductReadSerializer(product)
             return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+    def list(self, request):
+        page = request.query_params.get('page')
+        queryset = Product.objects.filter(stock__gt=0)
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer_class()
+            products = serializer(page, many=True)
+            return self.get_paginated_response(products.data)
+
+        serializer = self.get_serializer_class()
+        products = serializer(queryset, many=True)
+        return Response(products.data)
+    
+    @action(methods=["get"], detail=False)
+    def raw(self, request):
+        try:
+            queryset = Product.objects.filter(stock__gt=0)
+            serializer = self.get_serializer_class()
+            products = serializer(queryset, many=True)
+            return Response(products.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
