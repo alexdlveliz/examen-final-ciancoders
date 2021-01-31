@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 class Cart extends Component {
     render() {
-        const { cart, deleteCart } = this.props;
+        const { cart, deleteCart, makeSale } = this.props;
         return (
             <React.Fragment>
                 <div className="my-4 p-4 padding card">
@@ -18,25 +18,30 @@ class Cart extends Component {
                         </div>
                     ) : (
                         <React.Fragment>
-                            <div className="row d-flex flex-direction-column justify-content-center">
-                                <h1>Productos</h1>
-                                <table className="table table-striped">
+                            <div className="row d-flex flex-column ">
+                                <h1 className="text-center">Productos</h1>
+                                <table className="table table-striped my-4">
                                     <thead>
                                         <tr className="table-info">
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Precio</th>
                                             <th scope="col">Cantidad</th>
+                                            <th scope="col">Subtotal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {cart.map(product => {
                                             return (
-                                                <tr>
+                                                <tr key={product.id}>
                                                     <th scope="row">
                                                         {product.name}
                                                     </th>
                                                     <td>Q.{product.price}</td>
                                                     <td>{product.quantity}</td>
+                                                    <td>
+                                                        {product.price *
+                                                            product.quantity}
+                                                    </td>
                                                 </tr>
                                             );
                                         })}
@@ -48,13 +53,16 @@ class Cart extends Component {
                                     Regresar al catálogo
                                 </Link>
                                 <div className="d-flex justify-content-between">
-                                    <button 
+                                    <button
                                         className="btn btn-secondary mx-4"
                                         onClick={deleteCart}
                                     >
                                         Borrar carrito
                                     </button>
-                                    <button className="btn btn-primary">
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={makeSale}
+                                    >
                                         Comprar
                                     </button>
                                 </div>

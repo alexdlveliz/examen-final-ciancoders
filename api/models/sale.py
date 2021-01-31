@@ -12,18 +12,10 @@ from api.models.product import Product
 
 class Sale(ParentModel):
     """ Venta hecha
-    Guarda el nombre del comprador y
-    el total.
+    Guarda el total de la compra.
     La fecha en la cual se hizo la venta se registra automáticamente gracias
     a ParentModel
     """
-
-    buyer = models.CharField(
-        'Comprador',
-        null=True,
-        blank=True,
-        max_length=50
-    )
     total = models.FloatField(
         'Total de la venta',
         null=False,

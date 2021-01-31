@@ -66,6 +66,27 @@ export const addToCart = id => (dispatch, getStore) => {
         });
 };
 
+export const makeSale = () => (dispatch, getStore) => {
+    const cartProducts = getStore().products.cart;
+    api.post('/sale', cartProducts)
+        .then(response => {
+            console.log(response);
+            NotificationManager.success(
+                'Compra Realizada',
+                'Éxito',
+                3000
+            )
+            dispatch({
+                type: DELETE_CART,
+                cart: []
+            })
+            dispatch(push('/'));
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
 export const deleteCart = () => dispatch => {
     const newCart = [];
     dispatch({
@@ -79,6 +100,7 @@ export const actions = {
     getProducts,
     addToCart,
     deleteCart,
+    makeSale,
 };
 
 export const reducers = {

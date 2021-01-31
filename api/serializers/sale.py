@@ -17,7 +17,6 @@ class SaleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sale
         fields = (
-            'buyer',
             'total',
         )
 
