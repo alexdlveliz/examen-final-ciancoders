@@ -11,5 +11,5 @@ npm-debug.log
 *.pyc
 db.sqlite3
 local_settings.py
-api/migrations/*
+.vscode/
 **/*.pyc
