@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import { actions } from '../../../redux/modules/products/products';
+import { actions } from '../../../../redux/modules/products/products';
 import ProductList from './ProductList';
 
 const ms2p = state => {
     return {
-        ...state.products
+        ...state.products,
     }
-}
+};
 
 const md2p = {
     ...actions

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import ProductCard from './ProductCard';
 
-class ProductList extends Component {
+class Catalogue extends Component {
     componentWillMount() {
         const { getProducts } = this.props;
         getProducts();
@@ -31,4 +31,4 @@ class ProductList extends Component {
     }
 }
 
-export default ProductList;
+export default Catalogue;

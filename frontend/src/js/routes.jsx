@@ -23,8 +23,10 @@ import Notificaciones from './common/components/Examples/Notificaciones';
 import ExampleTabs from './common/components/Examples/Tabs/Tabs';
 require('../style/index.css');
 
-import ProductListContainer from './common/components/Products/ProductListContainer';
-import CartContainer from './common/components/Products/CartContainer';
+import CatalogueContainer from './common/components/Products/Catalogue/CatalogueContainer';
+import CartContainer from './common/components/Products/Cart/CartContainer';
+import ProductListContainer from './common/components/Products/ProductList/ProductListContainer';
+import ProductCreateContainer from './common/components/Products/ProductList/ProductCreateContainer';
 
 module.exports = (
     <div>
@@ -38,8 +40,13 @@ module.exports = (
                 <ProtectedRoute exact path="/notifications" component={Notificaciones} />
                 <ProtectedRoute exact path="/tabs" component={ExampleTabs} />
 
-                <PublicRoute exact path="/" component={ProductListContainer} />
+                <PublicRoute exact path="/" component={CatalogueContainer} />
                 <PublicRoute exact path="/cart" component={CartContainer} />
+
+                <ProtectedRoute exact path='/products' component={ProductListContainer} />
+                <ProtectedRoute exact path="/products/create" component={ProductCreateContainer} />
+                <ProtectedRoute exact path='/products/:id' component={ProductCreateContainer} />
+                <ProtectedRoute exact path='/products/:id/editar' component={ProductCreateContainer} />
                 <Route component={NotFound} />
             </Switch>
         </div>

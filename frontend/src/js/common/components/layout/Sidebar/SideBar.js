@@ -34,15 +34,15 @@ class SideBar extends Component {
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">edit</i>
                                 </div>
-                                <span>Home</span>
+                                <span>Catálogo de productos</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/page2" className="nav-link" activeClassName={'active'}>
+                            <NavLink to="/products" className="nav-link" activeClassName={'active'}>
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">vertical_split</i>
                                 </div>
-                                <span>Basic components</span>
+                                <span>Productos del vendedor</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
@@ -50,7 +50,7 @@ class SideBar extends Component {
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">vertical_split</i>
                                 </div>
-                                <span>Grids</span>
+                                <span>Carrito de compras</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
