@@ -1,6 +1,7 @@
 import json
 
 from django.core.files import File
+from django.db import transaction
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status, filters, viewsets
 from django.contrib.auth.models import User
@@ -38,14 +39,23 @@ class UserViewset(viewsets.ModelViewSet):
         return [permission() for permission in permission_classes]
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        usuario = User.objects.get(username=request.data["username"])
-        usuario.set_password(request.data["password"])
-        usuario.save()
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        try:
+            with transaction.atomic():
+                serializer = self.get_serializer(data=request.data)
+                serializer.is_valid(raise_exception=True)
+                serializer.save()
+                usuario = User.objects.get(username=request.data["username"])
+                usuario.set_password(request.data["password"])
+                usuario.save()
+
+                Profile.objects.create(
+                    user=usuario
+                )
+                
+                headers = self.get_success_headers(serializer.data)
+                return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        except Exception as e:
+            return Response({"detail": str(e)})
 
     def perform_create(self, serializer):
         serializer.save()

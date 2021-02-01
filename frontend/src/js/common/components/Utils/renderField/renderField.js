@@ -10,8 +10,12 @@ import _ from "lodash";
 
 
 export const renderField = ({
-                                input, placeholder, type, meta: { touched, error },
-                            }) => {
+        input,
+        placeholder,
+        type,
+        meta: { touched, error },
+        disabled = false
+    }) => {
     const invalid = touched && error;
     return (
         <div>
@@ -20,6 +24,7 @@ export const renderField = ({
                 placeholder={placeholder}
                 type={type}
                 className={classNames('form-control', { 'is-invalid': invalid })}
+                disabled={disabled}
             />
             {invalid && (
                 <div className="invalid-feedback">
@@ -53,8 +58,15 @@ export const renderTextArea = ({
 };
 
 export const renderNumber = ({
-                                 input, decimalScale, placeholder, meta: { touched, error }, prefix="", suffix="", numberFormat,
-                             }) => {
+        input,
+        decimalScale,
+        placeholder,
+        meta: { touched, error },
+        prefix="",
+        suffix="",
+        numberFormat,
+        disabled = false
+    }) => {
     const invalid = touched && error;
     return (
         <div>
@@ -71,6 +83,7 @@ export const renderNumber = ({
                 onValueChange={(values) => {
                     input.onChange(values.value);
                 }}
+                disabled={disabled}
             />
             {invalid && (
                 <div className="invalid-feedback">
@@ -82,8 +95,12 @@ export const renderNumber = ({
 };
 
 export const renderCurrency = ({
-                                   input, meta: { touched, error }, prefix="Q ", placeholder,
-                               }) => {
+        input,
+        meta: { touched, error },
+        prefix="Q ",
+        placeholder,
+        disabled = false
+    }) => {
     const invalid = touched && error;
     return (
         <div>
@@ -98,6 +115,7 @@ export const renderCurrency = ({
                 onValueChange={(values) => {
                     input.onChange(values.value);
                 }}
+                disabled={disabled}
             />
             {invalid && (
                 <div className="invalid-feedback">

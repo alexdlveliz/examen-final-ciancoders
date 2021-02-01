@@ -6,5 +6,6 @@ export {
     renderSelectField,
     renderNumber,
     renderCurrency,
-    renderSwitch
+    renderSwitch,
+    AsyncSelectField
 } from './renderField'

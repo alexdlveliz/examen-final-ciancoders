@@ -7,7 +7,7 @@ class SideBar extends Component {
     }
 
     render() {
-        const { toggleOpen, navToggle, logOut } = this.props;
+        const { toggleOpen, navToggle } = this.props;
         return (
             <aside
                 className={`main-sidebar px-0 col-12 col-md-3 col-lg-2 ${
@@ -38,42 +38,13 @@ class SideBar extends Component {
                     <ul className="nav--no-borders flex-column nav">
                         <li className="nav-item">
                             <NavLink
-                                to="/products"
-                                className="nav-link"
-                                activeClassName={'active'}
-                            >
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">edit</i>
-                                </div>
-                                <span>Tus Productos</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                to="/reports"
-                                className="nav-link"
-                                activeClassName={'active'}
-                            >
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">edit</i>
-                                </div>
-                                <span>Reportes</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <hr/>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
                                 to="/"
                                 exact
                                 className="nav-link "
                                 activeClassName={'active'}
                             >
                                 <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">
-                                        vertical_split
-                                    </i>
+                                    <i className="material-icons">edit</i>
                                 </div>
                                 <span>Catálogo de productos</span>
                             </NavLink>
@@ -81,8 +52,7 @@ class SideBar extends Component {
                         <li className="nav-item">
                             <NavLink
                                 to="/cart"
-                                exact
-                                className="nav-link "
+                                className="nav-link"
                                 activeClassName={'active'}
                             >
                                 <div className="d-inline-block item-icon-wrapper">
@@ -92,18 +62,6 @@ class SideBar extends Component {
                                 </div>
                                 <span>Carrito de compras</span>
                             </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                to="/login"
-                                onClick={logOut}
-                                className="nav-link"
-                            >
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">lock</i>
-                                </div>
-                                <span>Log Out</span>
-                            </Link>
                         </li>
                     </ul>
                 </div>
