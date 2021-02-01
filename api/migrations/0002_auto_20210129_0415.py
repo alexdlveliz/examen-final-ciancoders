@@ -8,10 +8,10 @@ def initialData(apps, schema_editor):
     Profile = apps.get_model('api', 'Profile')
     Product = apps.get_model('api', 'Product')
     user = User.objects.create(
-        username="alexdlveliz",
-        email="alexdlveliz@hotmail.com",
-        first_name="Alex",
-        last_name="de León",
+        username="usuario",
+        email="usuario@ejemplo.com",
+        first_name="Usuario",
+        last_name="Inicial",
         password="pbkdf2_sha256$150000$GuC3z3UsxZiA$iRlgdMDESZrejTrL1B39zJ27Jid3fiPsALaI6A4urhg="
     )
     profile = Profile.objects.create(

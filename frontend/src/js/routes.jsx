@@ -27,6 +27,7 @@ import CatalogueContainer from './common/components/Products/Catalogue/Catalogue
 import CartContainer from './common/components/Products/Cart/CartContainer';
 import ProductListContainer from './common/components/Products/ProductList/ProductListContainer';
 import ProductCreateContainer from './common/components/Products/ProductList/ProductCreateContainer';
+import ReportContainer from './common/components/Reports/ReportContainer';
 
 module.exports = (
     <div>
@@ -43,10 +44,12 @@ module.exports = (
                 <PublicRoute exact path="/" component={CatalogueContainer} />
                 <PublicRoute exact path="/cart" component={CartContainer} />
 
-                <ProtectedRoute exact path='/products' component={ProductListContainer} />
+                <ProtectedRoute exact path="/products" component={ProductListContainer} />
                 <ProtectedRoute exact path="/products/create" component={ProductCreateContainer} />
-                <ProtectedRoute exact path='/products/:id' component={ProductCreateContainer} />
-                <ProtectedRoute exact path='/products/:id/editar' component={ProductCreateContainer} />
+                <ProtectedRoute exact path="/products/:id" component={ProductCreateContainer} />
+                <ProtectedRoute exact path="/products/:id/editar" component={ProductCreateContainer} />
+
+                <ProtectedRoute exact path="/reports" component={ReportContainer} />
                 <Route component={NotFound} />
             </Switch>
         </div>

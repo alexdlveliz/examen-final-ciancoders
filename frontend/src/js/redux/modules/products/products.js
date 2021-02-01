@@ -14,6 +14,7 @@ export const createProduct = (data = {}) => dispatch => {
     api.post('/product', data)
         .then(response => {
             NotificationManager.success('Producto creado', 'Éxito', 3000);
+            dispatch(push('/products'));
         })
         .catch(error => {
             console.log(error);

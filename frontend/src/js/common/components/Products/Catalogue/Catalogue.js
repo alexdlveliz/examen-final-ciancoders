@@ -18,7 +18,7 @@ class Catalogue extends Component {
                     </div>
                 </div>
                 {products && (
-                    <section className="container d-flex flex-row justify-content-between flex-wrap">
+                    <section className="container d-flex flex-row justify-content-evenly flex-wrap">
                         {products.map(product => {
                             return (
                                 <ProductCard product={product} addToCart={addToCart} key={product.id}/>

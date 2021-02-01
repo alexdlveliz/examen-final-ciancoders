@@ -102,7 +102,7 @@ class ProductViewSet(viewsets.ModelViewSet):
                 queryset = Product.objects.filter(stock__gt=0)
             else:
                 profile = Profile.objects.get(user=user)
-                queryset = Product.objects.exclude(owner=profile)
+                queryset = Product.objects.exclude(owner=profile, stock__gt=0)
             
             serializer = self.get_serializer_class()
             products = serializer(queryset, many=True)

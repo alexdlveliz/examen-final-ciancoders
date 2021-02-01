@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link, NavLink} from "react-router-dom";
+import { Link, NavLink } from 'react-router-dom';
 
 class SideBar extends Component {
     constructor(props) {
@@ -9,20 +9,27 @@ class SideBar extends Component {
     render() {
         const { toggleOpen, navToggle, logOut } = this.props;
         return (
-            <aside className={`main-sidebar px-0 col-12 col-md-3 col-lg-2 ${toggleOpen?'':'open'}`}>
+            <aside
+                className={`main-sidebar px-0 col-12 col-md-3 col-lg-2 ${
+                    toggleOpen ? '' : 'open'
+                }`}
+            >
                 <div className="main-navbar">
-                    <nav
-                        className="align-items-stretch bg-white flex-md-nowrap border-bottom p-0 navbar navbar-light">
-                        <a  href="#" className="w-100 mr-0 navbar-brand" >
+                    <nav className="align-items-stretch bg-white flex-md-nowrap border-bottom p-0 navbar navbar-light">
+                        <a href="#" className="w-100 mr-0 navbar-brand">
                             <div className="d-table m-auto">
-                                <img id="main-logo"
+                                <img
+                                    id="main-logo"
                                     className="d-inline-block align-top mr-1"
                                     src={require('assets/img/logo.png')}
-                                    alt="Logo" />
+                                    alt="Logo"
+                                />
                             </div>
                         </a>
-                        <a  className="toggle-sidebar d-sm-inline d-md-none d-lg-none"
-                            onClick={navToggle}>
+                        <a
+                            className="toggle-sidebar d-sm-inline d-md-none d-lg-none"
+                            onClick={navToggle}
+                        >
                             <i className="material-icons"></i>
                         </a>
                     </nav>
@@ -30,47 +37,68 @@ class SideBar extends Component {
                 <div className="nav-wrapper">
                     <ul className="nav--no-borders flex-column nav">
                         <li className="nav-item">
-                            <NavLink to="/" exact className="nav-link " activeClassName={'active'}>
+                            <NavLink
+                                to="/products"
+                                className="nav-link"
+                                activeClassName={'active'}
+                            >
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">edit</i>
+                                </div>
+                                <span>Tus Productos</span>
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                to="/reports"
+                                className="nav-link"
+                                activeClassName={'active'}
+                            >
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">edit</i>
+                                </div>
+                                <span>Reportes</span>
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <hr/>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                to="/"
+                                exact
+                                className="nav-link "
+                                activeClassName={'active'}
+                            >
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">
+                                        vertical_split
+                                    </i>
                                 </div>
                                 <span>Catálogo de productos</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/products" className="nav-link" activeClassName={'active'}>
+                            <NavLink
+                                to="/cart"
+                                exact
+                                className="nav-link "
+                                activeClassName={'active'}
+                            >
                                 <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
-                                </div>
-                                <span>Productos del vendedor</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to="/grids" className="nav-link" activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
+                                    <i className="material-icons">
+                                        vertical_split
+                                    </i>
                                 </div>
                                 <span>Carrito de compras</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/notifications" className="nav-link" activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
-                                </div>
-                                <span>Notificaciones</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to="/tabs" className="nav-link" activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
-                                </div>
-                                <span>Tabs</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/login" onClick={logOut} className="nav-link">
+                            <Link
+                                to="/login"
+                                onClick={logOut}
+                                className="nav-link"
+                            >
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">lock</i>
                                 </div>
@@ -80,7 +108,7 @@ class SideBar extends Component {
                     </ul>
                 </div>
             </aside>
-        )
+        );
     }
 }
 

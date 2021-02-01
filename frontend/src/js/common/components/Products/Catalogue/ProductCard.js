@@ -7,7 +7,7 @@ class ProductCard extends Component {
     render() {
         const { product, addToCart } = this.props;
         return (
-            <div className="card my-3" style={{ width: '18rem' }}>
+            <div className="card my-3 mx-3" style={{ width: '18rem' }}>
                 <div className="card-body">
                     <h5 className="card-title">
                         {product.name}
